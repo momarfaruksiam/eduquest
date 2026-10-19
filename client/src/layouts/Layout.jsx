@@ -12,10 +12,16 @@ import SideNavigation from '../components/SideNavigation'
 
 export default function Layout() {
     const [openSideNavigation, setSideNavigation] = useState(false)
+    const [openSearch, setOpenSearch] = useState(false)
+
 
     return (
-        <div className='flex flex-col justify-between min-h-dvh'>
-            <Header setSideNavigation={setSideNavigation} />
+        <div
+            className='flex flex-col justify-between min-h-dvh'>
+            <Header
+                openSearch={openSearch}
+                setOpenSearch={setOpenSearch}
+                setSideNavigation={setSideNavigation} />
             <div
                 onClick={() => setSideNavigation(false)}
                 className={`fixed top-0 bottom-0 bg-card overflow-hidden z-10 max-h-dvh flex flex-col justify-center
@@ -33,10 +39,21 @@ export default function Layout() {
                 onClick={() => setSideNavigation(false)}
                 className={`absolute bg-text opacity-20 top-0 bottom-0 left-0 z-9
                 ${openSideNavigation && 'right-0'}`} />
-            <div className='pt-20'>
+            <div
+                onClick={() => {
+                    if (openSearch)
+                        setOpenSearch(false)
+                }}
+                className='pt-20'>
                 <Outlet />
             </div>
-            <Footer setSideNavigation={setSideNavigation} />
+            <div
+                onClick={() => {
+                    if (openSearch)
+                        setOpenSearch(false)
+                }}>
+                <Footer setSideNavigation={setSideNavigation} />
+            </div>
         </div>
     )
 }

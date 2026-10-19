@@ -11,12 +11,11 @@ import Search from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
-export default function Header({ setSideNavigation }) {
-  const [openSearch, setOpenSearch] = useState(false)
+export default function Header({ openSearch, setOpenSearch, setSideNavigation }) {
   const [showNav, setShowNav] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const isActive = location.pathname
 
   useEffect(() => {
@@ -41,9 +40,11 @@ export default function Header({ setSideNavigation }) {
 
 
   return (
-    <header className={`bg-bg shadow fixed top-0 left-0 w-full transition-transform duration-300
+    <header
+      className={`fixed top-0 left-0 z-50 bg-bg shadow w-full transition-transform duration-300
     ${showNav ? 'translate-y-0' : '-translate-y-full'}
-    `}>
+  `}
+    >
       <nav className='flex justify-between items-center p-4'>
         <div className='flex items-center gap-2 select-none'>
           <IoMdMenu onClick={() => setSideNavigation(true)}
@@ -63,7 +64,11 @@ export default function Header({ setSideNavigation }) {
               return (
                 <li
                   key={index}
-                  onClick={() => { navigate(item.link) }}
+                  onClick={() => {
+                    if (openSearch)
+                      setOpenSearch(false)
+                    navigate(item.link)
+                  }}
                   className={`p-2 
                      ${index === 0 && 'hidden md:flex'}
                      ${index >= 3 && 'hidden md:flex'}
@@ -88,6 +93,6 @@ export default function Header({ setSideNavigation }) {
       <div className={`${openSearch ? 'flex' : 'hidden'} md:hidden mx-4 mb-4`}>
         <Search />
       </div>
-    </header>
+    </header >
   )
 }

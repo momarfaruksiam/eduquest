@@ -20,8 +20,8 @@ export default function SideNavigation() {
                         <Link
                             to={item.link}
                             title={item.title}
-                            className={`flex items-center gap-4 font-semibold text-lg text-subtext py-4 px-6 hover:bg-subtext/10
-                                ${isActive ? 'bg-border' : ''}
+                            className={`flex items-center gap-4 font-semibold text-lg py-4 px-6 
+                                ${isActive ? 'bg-border text-main' : ' text-subtext hover:bg-subtext/10'}
                                 ${item.link === '/sign-in' || item.link === '/sign-out' ? 'mt-20 border-t-2 border-border flex-row-reverse justify-center' : ''}
                             `}
                         >

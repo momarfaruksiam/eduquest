@@ -3,7 +3,7 @@ import { FaSearch, FaUser } from 'react-icons/fa';
 
 export default function Search() {
     return (
-        <div className='w-full flex border-2 border-subtext/50 bg-subtext/50 rounded-lg overflow-hidden text-subtext'>
+        <div className='w-full flex border border-b-2 border-main bg-main/50 rounded overflow-hidden text-subtext'>
             <input
                 type="text"
                 placeholder='Search here...'
