@@ -77,3 +77,8 @@
 body {
     @apply bg-bg overflow-y-scroll relative text-text;
 }
+
+
+input {
+    @apply outline-0;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 
@@ -11,16 +11,18 @@ import SideNavigation from '../components/SideNavigation'
 
 
 export default function Layout() {
-    const [openSideNavigation, setSideNavigation] = useState(true)
+    const [openSideNavigation, setSideNavigation] = useState(false)
+
     return (
         <div className='flex flex-col justify-between min-h-dvh'>
             <Header setSideNavigation={setSideNavigation} />
             <div
                 onClick={() => setSideNavigation(false)}
-                className={`absolute top-0 bottom-0 bg-card overflow-hidden z-10 max-h-dvh flex flex-col justify-center
+                className={`fixed top-0 bottom-0 bg-card overflow-hidden z-10 max-h-dvh flex flex-col justify-center
                     transition-max-w duration-150
                  ${openSideNavigation ? 'max-w-60' : 'max-w-0'}`}>
-                <div className='p-2 mt-5 mb-3'>
+                <div className='p-2 mt-5 mb-5 flex items-center'>
+                    <h1 className='font-bold text-xl sm:text-2xl text-main'>EduLot</h1>
                     <RxCross2
                         className='text-2xl ml-auto rounded text-subtext hover:text-bg hover:bg-subtext/40'
                         onClick={() => setSideNavigation(false)} />
@@ -31,7 +33,10 @@ export default function Layout() {
                 onClick={() => setSideNavigation(false)}
                 className={`absolute bg-text opacity-20 top-0 bottom-0 left-0 z-9
                 ${openSideNavigation && 'right-0'}`} />
-            <Outlet />
+            <div className='py-20 p-4'>
+                <Outlet />
+            </div>
+            <Footer setSideNavigation={setSideNavigation} />
         </div>
     )
 }
