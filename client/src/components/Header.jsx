@@ -6,14 +6,18 @@ import { FaSearch, FaUser } from 'react-icons/fa';
 import { RxCross2 } from "react-icons/rx";
 
 
-import navItems from '../utils/navItems'
+import navItems from '../functions/navItems'
 import Search from './Search'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function Header({ setSideNavigation }) {
   const [openSearch, setOpenSearch] = useState(false)
   const [showNav, setShowNav] = useState(true)
-
+  const navigate = useNavigate()
+  const location = useLocation()
+  
+  const isActive = location.pathname
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -43,23 +47,38 @@ export default function Header({ setSideNavigation }) {
       <nav className='flex justify-between items-center p-4'>
         <div className='flex items-center gap-2 select-none'>
           <IoMdMenu onClick={() => setSideNavigation(true)}
-            className='text-4xl text-main bg-border/50 hover:bg-border rounded' />
+            className='text-4xl text-main bg-border/50 hover:bg-border rounded border border-border' />
           <h1 className='font-bold text-xl sm:text-2xl text-main'>EduLot</h1>
         </div>
 
         <div className='flex flex-row-reverse gap-2 items-center'>
-          <ul className='flex items-center gap-2 text-xl sm:text-2xl text-subtext hover:text-text'>
+          <ul className='flex items-center gap-2 text-2xl text-subtext hover:text-text'>
             <li
               onClick={() => setOpenSearch(!openSearch)}
               className='md:hidden p-2 text-subtext hover:text-text rounded'>
               {openSearch ? <RxCross2 /> : <FaSearch />}
             </li>
-            {navItems.slice(0, 3).map((item, index) => (
-              <li
-                key={index}
-                className={`p-2 text-subtext hover:text-text rounded ${index === 0 && 'hidden md:flex'}`}>{item.icon}</li>
-            ))}
-            <li className='p-2 text-subtext hover:bg-subtext/50 hover:text-text rounded border border-border'><FaUser /></li>
+            {navItems.slice(0, 3).map((item, index) => {
+              const activeIcon = isActive === item.link
+              return (
+                <li
+                  key={index}
+                  onClick={() => { navigate(item.link) }}
+                  className={`p-2 
+                     ${index === 0 && 'hidden md:flex'}
+                     ${index >= 3 && 'hidden md:flex'}
+                     ${activeIcon ? 'text-main border-b-2' : 'text-subtext hover:text-text'}`}>
+                  {item.icon}
+                </li>
+              )
+            })}
+            <li
+              onClick={() => { navigate('/sign-in') }}
+              className={`p-2 hover:bg-subtext/50 hover:text-text rounded border-2 border-border
+              ${isActive === '/sign-in'
+                  ? 'text-main border-main' : 'text-subtext'}`}>
+              <FaUser />
+            </li>
           </ul>
           <div className='hidden md:flex'>
             <Search />

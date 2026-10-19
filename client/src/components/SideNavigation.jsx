@@ -4,7 +4,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 
-import navItems from '../utils/navItems'
+import navItems from '../functions/navItems'
 
 export default function SideNavigation() {
     const location = useLocation()

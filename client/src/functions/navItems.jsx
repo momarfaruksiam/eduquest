@@ -34,7 +34,7 @@ const navItems = [
     { link: '/settings', title: 'Settings', icon: <HiCog6Tooth /> },
     { link: '/sign-in', title: 'Sign in', icon: <FaSignInAlt /> },
     false && { link: '/sign-out', title: 'Sign-out', icon: <FaSignOutAlt /> },
-]
+].filter(Boolean)
 
 
 export default navItems

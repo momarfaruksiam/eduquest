@@ -7,9 +7,9 @@ export default function Search() {
             <input
                 type="text"
                 placeholder='Search here...'
-                className='p-2 font-medium bg-bg w-full'
+                className='p-1 px-2 font-medium text-lg bg-bg w-full'
             />
-            <button className='px-8 text-bg'><FaSearch /></button>
+            <button className='px-8 text-bg text-xl'><FaSearch /></button>
         </div>
     )
 }
