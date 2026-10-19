@@ -66,7 +66,7 @@ export default function Header({ setSideNavigation }) {
           </div>
         </div>
       </nav>
-      <div className={`${openSearch ? 'flex' : 'hidden'} md:hidden mx-4`}>
+      <div className={`${openSearch ? 'flex' : 'hidden'} md:hidden mx-4 mb-4`}>
         <Search />
       </div>
     </header>

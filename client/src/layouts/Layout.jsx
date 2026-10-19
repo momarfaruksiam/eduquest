@@ -33,7 +33,7 @@ export default function Layout() {
                 onClick={() => setSideNavigation(false)}
                 className={`absolute bg-text opacity-20 top-0 bottom-0 left-0 z-9
                 ${openSideNavigation && 'right-0'}`} />
-            <div className='py-20 p-4'>
+            <div className='pt-20 p-4'>
                 <Outlet />
             </div>
             <Footer setSideNavigation={setSideNavigation} />
