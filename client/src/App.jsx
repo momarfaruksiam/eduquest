@@ -1,7 +1,12 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
+import { RouterProvider } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
+import routers from './routers/routers'
 
 export default function App() {
-  return (
-    <div className='bg-red-500'>App</div>
-  )
+  return <>
+    <ToastContainer />
+    <RouterProvider router={routers} />
+  </>
 }
