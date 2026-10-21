@@ -21,6 +21,7 @@ export default function Layout() {
             <Header
                 openSearch={openSearch}
                 setOpenSearch={setOpenSearch}
+                openSideNavigation={openSideNavigation}
                 setSideNavigation={setSideNavigation} />
             <div
                 onClick={() => setSideNavigation(false)}
@@ -44,7 +45,7 @@ export default function Layout() {
                     if (openSearch)
                         setOpenSearch(false)
                 }}
-                className='pt-20'>
+                className='py-20'>
                 <Outlet />
             </div>
             <div

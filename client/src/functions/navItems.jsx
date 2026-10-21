@@ -28,10 +28,6 @@ const navItems = [
     { link: '/schedule', title: 'Schedule', icon: <HiCalendarDays /> },
     { link: '/analytics', title: 'Analytics', icon: <HiChartBar /> },
     { link: '/settings', title: 'Settings', icon: <HiCog6Tooth /> },
-    { link: '/saved', title: 'Saved', icon: <HiBookmark /> },
-    { link: '/schedule', title: 'Schedule', icon: <HiCalendarDays /> },
-    { link: '/analytics', title: 'Analytics', icon: <HiChartBar /> },
-    { link: '/settings', title: 'Settings', icon: <HiCog6Tooth /> },
     { link: '/sign-in', title: 'Sign in', icon: <FaSignInAlt /> },
     false && { link: '/sign-out', title: 'Sign-out', icon: <FaSignOutAlt /> },
 ].filter(Boolean)

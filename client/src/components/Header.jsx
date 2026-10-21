@@ -11,7 +11,7 @@ import Search from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
-export default function Header({ openSearch, setOpenSearch, setSideNavigation }) {
+export default function Header({ openSearch, setOpenSearch, setSideNavigation, openSideNavigation }) {
   const [showNav, setShowNav] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
@@ -47,7 +47,7 @@ export default function Header({ openSearch, setOpenSearch, setSideNavigation })
     >
       <nav className='flex justify-between items-center p-4'>
         <div className='flex items-center gap-2 select-none'>
-          <IoMdMenu onClick={() => setSideNavigation(true)}
+          <IoMdMenu onClick={() => setSideNavigation(!openSideNavigation)}
             className='text-4xl text-main bg-border/50 hover:bg-border rounded border border-border' />
           <h1 className='font-bold text-xl sm:text-2xl text-main'>EduLot</h1>
         </div>
